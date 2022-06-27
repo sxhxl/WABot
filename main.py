@@ -36,43 +36,34 @@ def clear():
     subprocess.call("clear", shell=True)
 
 def menu():
-    opt = input(bcolors.CYAN+'''\r\n1. Send scheduled WhatsApp message (WhatsApp web login advised)
-2. Spam using a text file
-3. Spam using you custom message
-4. Exit'''+bcolors.BOLD+'''
+    opt = input(bcolors.CYAN+'''\r\n1. Spam using a text file
+2. Spam using you custom message
+3. Exit'''+bcolors.BOLD+'''
 Select an option : ''')
     if opt == '1':
         clear()
         banner2()
-        num = input(bcolors.GREEN+"\r\nEnter the number you want to send the message to (with country code) : ")
-        msg = input(bcolors.GREEN+"\r\nEnter the message you want to schedule : ")
-        sched_time = int(input(bcolors.GREEN+"\r\nEnter the time in 24 hr format without colon (e.g : 2315) : "))
-        hr, min = sched_time.__divmod__(100)
-        pywhatkit.sendwhatmsg(num,msg,hr,min)
-    elif opt == '2':
-        clear()
-        banner2()
-        path = input(bcolors.GREEN+"\r\nEnter the path to text file : ")
-        delay = int(input(bcolors.GREEN+"\r\nEnter a delay (in seconds) : "))
-        file = open(path,'r')
+        path = input(bcolors.GREEN + "\r\nEnter the path to text file : ")
+        delay = int(input(bcolors.GREEN + "\r\nEnter a delay (in seconds) : "))
+        file = open(path, 'r')
         while True:
             for words in file:
                 time.sleep(delay)
                 pyautogui.typewrite(words)
                 pyautogui.press('enter')
-    elif opt == '3':
+    elif opt == '2':
         clear()
         banner2()
-        msg = input(bcolors.GREEN+"\r\nEnter the message you want to send : ")
-        delay = int(input(bcolors.GREEN+"\r\nEnter a delay (in seconds) : "))
+        msg = input(bcolors.GREEN + "\r\nEnter the message you want to send : ")
+        delay = int(input(bcolors.GREEN + "\r\nEnter a delay (in seconds) : "))
         while True:
             time.sleep(delay)
             pyautogui.typewrite(msg)
             pyautogui.press('enter')
-    elif opt == '4':
+    elif opt == '3':
         clear()
         banner1()
-        print(bcolors.MAG+'Thank you for using the script.')
+        print(bcolors.MAG + 'Thank you for using the script.')
         exit()
 
 if __name__ == '__main__':
